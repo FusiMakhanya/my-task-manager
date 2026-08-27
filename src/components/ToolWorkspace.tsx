@@ -38,7 +38,7 @@ export type Field =
 interface Props {
   fields: Field[];
   system: string;
-  buildPrompt: (values: Record<string, string>) => string;
+  buildPrompt: (get: (key: string) => string) => string;
   submitLabel: string;
   outputLabel: string;
   fileName: string;
@@ -77,7 +77,7 @@ export function ToolWorkspace({
     }
     setLoading(true);
     try {
-      const res = await generate({ data: { system, prompt: buildPrompt(values) } });
+      const res = await generate({ data: { system, prompt: buildPrompt((k) => values[k] ?? "") } });
       setOutput(res.text.trim());
       toast.success("Draft ready — review and edit before using it.");
     } catch (err) {
