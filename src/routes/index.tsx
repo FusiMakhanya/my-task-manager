@@ -1,24 +1,39 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Navbar } from "@/components/Navbar";
+import { TaskManager } from "@/components/TaskManager";
+import { useTheme } from "@/hooks/use-theme";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "TaskFlow — Calm Task Management" },
+      {
+        name: "description",
+        content:
+          "A clean, minimal task manager with categories, completion tracking, and dark mode.",
+      },
+      { property: "og:title", content: "TaskFlow — Calm Task Management" },
+      {
+        property: "og:description",
+        content:
+          "A clean, minimal task manager with categories, completion tracking, and dark mode.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
+  const { theme, toggleTheme } = useTheme();
+
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="min-h-screen bg-background">
+      <Navbar theme={theme} onToggleTheme={toggleTheme} />
+      <main className="py-2">
+        <TaskManager />
+      </main>
     </div>
   );
 }
