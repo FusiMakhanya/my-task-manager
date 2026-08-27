@@ -1,6 +1,6 @@
 This project was built with [Lovable](https://lovable.dev).
 
-**Live app**: https://blue-zen-do.lovable.app
+**Live app**: https://my-task-manager-flow.lovable.app/
 
 ## Build with Lovable
 
