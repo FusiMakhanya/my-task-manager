@@ -1,7 +1,3 @@
-# Serene Task Flow
-
-"Create a modern task management app with a clean, minimal design. Include features for adding tasks, marking them complete, organizing by categories, and a dark mode toggle. Use a calming blue color scheme. It must also include navbar
-
 This project was built with [Lovable](https://lovable.dev).
 
 **Live app**: https://blue-zen-do.lovable.app
