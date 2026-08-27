@@ -70,15 +70,15 @@ function PlannerPage() {
         ]}
         buildPrompt={(v) => `Create a task plan.
 
-Goal: ${v.goal}
-Context and constraints: ${v.context}
-Time horizon: ${v.horizon}
-Capacity: ${v.capacity || "Not stated"}
+Goal: ${v("goal")}
+Context and constraints: ${v("context")}
+Time horizon: ${v("horizon")}
+Capacity: ${v("capacity") || "Not stated"}
 
 Return markdown with:
 ## Objective (one sentence)
 ## Prioritized tasks (table: # | Task | Priority (P1-P3) | Estimate | Owner | Depends on)
-## Suggested schedule across the ${v.horizon.toLowerCase()} horizon
+## Suggested schedule across the ${v("horizon").toLowerCase()} horizon
 ## Risks & mitigations
 ## Definition of done`}
       />

@@ -67,11 +67,11 @@ function ResearchPage() {
             options: ["Executive brief", "Bullet summary", "Pros & cons comparison"],
           },
         ]}
-        buildPrompt={(v) => `Research the following topic and produce a ${v.format.toLowerCase()}.
+        buildPrompt={(v) => `Research the following topic and produce a ${v("format").toLowerCase()}.
 
-Topic: ${v.topic}
-Scope, angle and audience: ${v.scope || "General professional audience"}
-Depth: ${v.depth}
+Topic: ${v("topic")}
+Scope, angle and audience: ${v("scope") || "General professional audience"}
+Depth: ${v("depth")}
 
 Return markdown with:
 ## Executive summary

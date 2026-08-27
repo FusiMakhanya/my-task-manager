@@ -68,13 +68,13 @@ function NotesPage() {
         ]}
         buildPrompt={(v) => `Summarize the following meeting.
 
-Meeting: ${v.meeting || "Not stated"}
-Attendees: ${v.attendees || "Not stated"}
-Depth: ${v.style}
+Meeting: ${v("meeting") || "Not stated"}
+Attendees: ${v("attendees") || "Not stated"}
+Depth: ${v("style")}
 
 Raw notes / transcript:
 """
-${v.notes}
+${v("notes")}
 """
 
 Return markdown with these sections:
