@@ -59,8 +59,8 @@ export function ToolWorkspace({
     Object.fromEntries(
       fields.map((f) => [
         f.id,
-        f.defaultValue ?? (f.type === "select" ? f.options[0] : ""),
-      ]),
+        f.defaultValue ?? (f.type === "select" ? (f.options[0] ?? "") : ""),
+      ]) as [string, string][],
     ),
   );
   const [output, setOutput] = useState("");
@@ -128,7 +128,7 @@ export function ToolWorkspace({
                 />
               ) : field.type === "select" ? (
                 <Select
-                  value={values[field.id]}
+                  value={values[field.id] ?? ""}
                   onValueChange={(v) => setValue(field.id, v)}
                 >
                   <SelectTrigger id={field.id}>
